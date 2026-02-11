@@ -4,7 +4,7 @@
 \name{hext-package}
 \alias{hext}
 \alias{hext-package}
-\title{hext: ASCII Hex Stickers}
+\title{hext: Make Text Hex Stickers.}
 \description{
 Make a text-based hex logo, inspired by Yihui Xie and Charlie Gao.
 }
