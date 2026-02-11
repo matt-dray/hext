@@ -1,18 +1,3 @@
----
-output: github_document
----
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
-
 # hext
 
 <!-- badges: start -->
@@ -42,18 +27,22 @@ Inspired by artistry in [Yihui's {litedown}](https://github.com/yihui/litedown) 
 ## Install
 
 GitHub exclusive.
-```{r}
-#| label: install
-#| eval: false
+```r
 install.packages("pak") # if not yet installed
 pak::pak("matt-dray/hext")
 ```
 
 Like:
 
-```{r}
-#| label: demo
+```r
 hext::get_base() |> cat()
+```
+```
+  ________
+ /        \
+/          \
+\          /
+ \________/
 ```
 
 ## Sage advice
