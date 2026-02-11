@@ -1,6 +1,10 @@
 # OS-specific
 .DS_Store
 
+# README-related
+README.html
+README_files/
+
 # History files
 .Rhistory
 .Rapp.history
