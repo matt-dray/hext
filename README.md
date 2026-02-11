@@ -77,12 +77,14 @@ characters](https://en.wikipedia.org/wiki/ASCII) like emojis. Text is
 best. Doesn’t mean artistry is out of the question.
 
 ``` r
-hext::make_hext(
+hex_cat <- hext::make_hext(
   r"{/\__/\}",
   "={ o x o}=",
   "l(  u u )",
-  "_b___b"
+  "_b___b",
+  .cat = FALSE
 )
+hex_cat |> cat()
 #   ________
 #  / /\__/\ \
 # /={ o x o}=\

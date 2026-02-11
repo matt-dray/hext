@@ -78,12 +78,14 @@ Doesn't mean artistry is out of the question.
 
 ```{r}
 #| label: hext-cat
-hext::make_hext(
+hex_cat <- hext::make_hext(
   r"{/\__/\}",
   "={ o x o}=",
   "l(  u u )",
-  "_b___b"
+  "_b___b",
+  .cat = FALSE
 )
+hex_cat |> cat()
 ```
 
 ## Sage advice
