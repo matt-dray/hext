@@ -11,8 +11,6 @@ or
 proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https://www.repostatus.org/#concept)
 <!-- badges: end -->
 
-> \[!NOTE\] Very much a concept that I may or may not develop in future.
-
       ________
      /        \
     /    ⬡⬢    \
@@ -39,8 +37,10 @@ install.packages("pak") # if not yet installed
 pak::pak("matt-dray/hext")
 ```
 
+## Use
+
 You can add (`text_1`, etc) and align (`align_1`, etc) text on each of
-the hex’s four lines.
+your hex’s four lines.
 
 To make this package’s logo:
 
@@ -62,7 +62,7 @@ A more complex example:
 ``` r
 # fmt: skip
 hext::make_hext(
-  " hello", "this ", "is", "_hext",
+  " hello", "this ", "is", "_hext", # space/underscore infill
   "left", "right", "centre", "left"
 )
 #   ________
@@ -82,7 +82,7 @@ hex_cat <- hext::make_hext(
   "={ o x o}=",
   "l(  u u )",
   "_b___b",
-  .cat = FALSE
+  .cat = FALSE # return character vector invisibly
 )
 hex_cat |> cat()
 #   ________
@@ -119,8 +119,8 @@ Trailing spaces to ‘square-off’ are acceptable but unnecessary.
 
 ## Gallery
 
-> \[!NOTE\] Please [raise a PR](https://github.com/matt-dray/hext/pulls)
-> to add to this illustrious gallery.
+Please [raise a PR](https://github.com/matt-dray/hext/pulls) to add to
+this illustrious gallery.
 
 \#000001: [{litedown}](https://github.com/yihui/litedown) by Yihui Xie
 
