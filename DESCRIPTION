@@ -1,0 +1,10 @@
+Package: hext
+Title: Make ASCII Hex Stickers.
+Version: 0.0.0.9000
+Authors@R: 
+    person("Matt", "Dray", , "mwdray+hexlite@gmail.com", role = c("aut", "cre"))
+Description: Make a text-based hex logo, inspired by Yihui Xie and Charlie Gao.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
