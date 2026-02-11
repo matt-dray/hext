@@ -1,8 +1,8 @@
 Package: hext
 Title: Make Text Hex Stickers.
-Version: 0.1.0
+Version: 0.0.0.9001
 Authors@R: 
-    person("Matt", "Dray", , "mwdray+hexlite@gmail.com", role = c("aut", "cre"))
+    person("Matt", "Dray", , "mwdray+hext@gmail.com", role = c("aut", "cre"))
 Description: Make a text-based hex logo, inspired by Yihui Xie and Charlie Gao.
 License: MIT + file LICENSE
 Encoding: UTF-8
