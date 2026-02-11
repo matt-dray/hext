@@ -50,11 +50,11 @@ hext::make_hext(
   line_2 = "⬡⬢", align_2 = "centre",
   line_3 = "hext", align_3 = "centre"
 )
-  ________
- /        \
-/    ⬡⬢    \
-\   hext   /
- \________/
+#   ________
+#  /        \
+# /    ⬡⬢    \
+# \   hext   /
+#  \________/
 ```
 
 A more complex example:
@@ -65,11 +65,11 @@ hext::make_hext(
   " hello", "this ", "is", "_hext",
   "left", "right", "centre", "left"
 )
-  ________
- / hello  \
-/     this \
-\    is    /
- \_hext___/
+#   ________
+#  / hello  \
+# /     this \
+# \    is    /
+#  \_hext___/
 ```
 
 Your kilometreage may vary with non-[ASCII
@@ -83,11 +83,11 @@ hext::make_hext(
   "l(  u u )",
   "_b___b"
 )
-  ________
- / /\__/\ \
-/={ o x o}=\
-\l(  u u ) /
- \__b___b_/
+#   ________
+#  / /\__/\ \
+# /={ o x o}=\
+# \l(  u u ) /
+#  \__b___b_/
 ```
 
 ## Sage advice

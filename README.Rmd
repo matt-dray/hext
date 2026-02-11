@@ -7,7 +7,7 @@ output: github_document
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "",
+  comment = "#",
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
@@ -22,10 +22,12 @@ knitr::opts_chunk$set(
 > [!NOTE]
 > Very much a concept that I may or may not develop in future.
 
-```{r}
-#| label: hext-logo-top
-#| echo: false
-hext::make_hext()
+```
+  ________
+ /        \
+/    ⬡⬢    \
+\   hext   /
+ \________/
 ```
 
 ## About
@@ -128,10 +130,12 @@ Trailing spaces to 'square-off' are acceptable but unnecessary.
 
 \#000003: [{hext}](https://github.com/matt-dray/hext/) by Matt Dray
 
-```{r}
-#| label: hext-logo-gallery
-#| echo: false
-hext::make_hext()
+```
+  ________
+ /        \
+/    ⬡⬢    \
+\   hext   /
+ \________/
 ```
 
 ## Overcomplicated file-based hexes
