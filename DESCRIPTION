@@ -1,5 +1,5 @@
 Package: hext
-Title: Make Text Hex Stickers.
+Title: Make Text Hex Stickers
 Version: 0.0.0.9001
 Authors@R: 
     person("Matt", "Dray", , "mwdray+hext@gmail.com", role = c("aut", "cre"))
