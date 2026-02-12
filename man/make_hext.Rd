@@ -6,8 +6,8 @@
 \usage{
 make_hext(
   text_1 = "",
-  text_2 = "⬡⬢",
-  text_3 = "hext",
+  text_2 = "",
+  text_3 = "",
   text_4 = "",
   align_1 = c("centre", "left", "right"),
   align_2 = c("centre", "left", "right"),
@@ -41,7 +41,7 @@ If you put text on line 4 then it will replace the border for that row.
 }
 \examples{
 make_hext(
-  line_2 = "⬡⬢", align_2 = "centre",
-  line_3 = "hext", align_3 = "centre"
+  "hello", "this", "is", "hext",
+  "left", "right", "centre", "left"
 )
 }

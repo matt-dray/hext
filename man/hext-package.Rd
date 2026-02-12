@@ -4,12 +4,12 @@
 \name{hext-package}
 \alias{hext}
 \alias{hext-package}
-\title{hext: Make Text Hex Stickers.}
+\title{hext: Make Text Hex Stickers}
 \description{
 Make a text-based hex logo, inspired by Yihui Xie and Charlie Gao.
 }
 \author{
-\strong{Maintainer}: Matt Dray \email{mwdray+hexlite@gmail.com}
+\strong{Maintainer}: Matt Dray \email{mwdray+hext@gmail.com}
 
 }
 \keyword{internal}
