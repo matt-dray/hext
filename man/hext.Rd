@@ -60,5 +60,5 @@ hext(
 
 # Return hex as a string without printing
 hex_text <- hext("hello!", "this", "is", "hext", print = FALSE)
-cat(hext_text)
+cat(hex_text)
 }
