@@ -2,11 +2,10 @@
 % Please edit documentation in R/hext-package.R
 \docType{package}
 \name{hext-package}
-\alias{hext}
 \alias{hext-package}
-\title{hext: Make Text Hex Stickers}
+\title{hext: Make Text-Based Hex Logos}
 \description{
-Make a text-based hex logo, inspired by Yihui Xie and Charlie Gao.
+Make a hex-sticker logo entirely from text. Inspired by Yihui Xie and Charlie Gao.
 }
 \author{
 \strong{Maintainer}: Matt Dray \email{mwdray+hext@gmail.com}
