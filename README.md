@@ -24,9 +24,7 @@ proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https:
 
 Hex stickers… but text.
 
-[Bye, hex stickers](https://yihui.org/en/2026/02/bye-stickers/). Welcome
-back Yihui.
-
+[Bye, hex stickers](https://yihui.org/en/2026/02/bye-stickers/).
 Inspired by artistry in [Yihui’s
 {litedown}](https://github.com/yihui/litedown) and then [Charlie’s
 {secretbase}](https://github.com/shikokuchuo/secretbase/).
@@ -42,16 +40,17 @@ pak::pak("matt-dray/hext")
 
 ## Use
 
-You can add (`text_*`) and align (`align_*`) text on each of your hex’s
-four lines (`*_1` to `*_4`).
+You can add text (`text_*`) and align it (`align_*`) for each of your
+hex’s four writable lines (`*_1` to `*_4`). You cannot exceed the
+allotted character width inside the hex border.
 
 To make this package’s logo:
 
 ``` r
 # fmt: skip
-hext::make_hext(
-  line_2 = "⬡⬢", align_2 = "centre",
-  line_3 = "hext", align_3 = "centre"
+hext::hext(
+  text_2 = "⬡⬢", align_2 = "centre",
+  text_3 = "hext", align_3 = "centre"
 )
 #   ________
 #  /        \
@@ -64,7 +63,7 @@ A more complex example:
 
 ``` r
 # fmt: skip
-hext::make_hext(
+hext::hext(
   " hello", "this ", "is", "_hext", # space/underscore infill
   "left", "right", "centre", "left"
 )
@@ -77,17 +76,19 @@ hext::make_hext(
 
 Your kilometreage may vary with non-[ASCII
 characters](https://en.wikipedia.org/wiki/ASCII) like emojis. Text is
-best. Doesn’t mean artistry is out of the question.
+best.
+
+That doesn’t mean artistry is out of the question. Here is a cat.
 
 ``` r
-hex_cat <- hext::make_hext(
-  r"{/\__/\}",
+hext_cat <- hext::hext(
+  r"{/\__/\}", # raw strings to escape
   "={ o x o}=",
   "l(  u u )",
   "_b___b",
-  .cat = FALSE # return character vector invisibly
+  print = FALSE # return char vector invisibly
 )
-hex_cat |> cat()
+hext_cat |> cat()
 #   ________
 #  / /\__/\ \
 # /={ o x o}=\
@@ -95,60 +96,29 @@ hex_cat |> cat()
 #  \__b___b_/
 ```
 
-## Sage advice
-
-Keep it simple.
-
-No, you didn’t hear me.
-
-*Simpler*.
-
 ## The Text-Stickers Standard
 
 You may be aware of the [the Stickers
-Standard](https://sticker.how/#type-hexagon). Too complex.
+Standard](https://sticker.how/#type-hexagon).
 
-Canoncially, the flat-bottomed text-hex is:
+Canoncially, a minimal, empty, flat-bottomed text-based hex is arranged
+top-to-bottom like:
 
-- \[2 spaces\]\[8 underscores\]
-- \[1 space\]\[1 slash\]\[8 spaces\]\[1 backslash\]
-- \[1 slash\]\[10 spaces\]\[1 backslash\]
-- \[1 backslash\]\[10 spaces\]\[1 slash\]
-- \[1 space\]\[1 backslash\]\[8 underscores\]\[1 slash\]
+0.  2 spaces, 8 underscores
+1.  1 space, 1 slash, 8 spaces, 1 backslash
+2.  1 slash, 10 spaces, 1 backslash
+3.  1 backslash, 10 spaces, 1 slash
+4.  1 space, 1 backslash, 8 underscores, 1 slash
 
-That’s four possible lines that can contain text.
+So you can add text to four possible lines inside the hex.
 
-Trailing spaces to ‘square-off’ are acceptable but unnecessary.
-
-## Gallery
-
-Please [raise a PR](https://github.com/matt-dray/hext/pulls) to add to
-this illustrious gallery.
-
-\#000001: [{litedown}](https://github.com/yihui/litedown) by Yihui Xie
-
-    [Reproduction awaiting clearance]
-
-\#000002: [{secretbase}](https://github.com/shikokuchuo/secretbase/) by
-Charlie Gao
-
-    [Reproduction awaiting clearance]
-
-\#000003: [{hext}](https://github.com/matt-dray/hext/) by Matt Dray
-
-      ________
-     /        \
-    /    ⬡⬢    \
-    \   hext   /
-     \________/
-
-## Overcomplicated file-based hexes
+## A world beyond text?
 
 If you’re interested in jpegs or whatever, see:
 
 - [{hexSticker}](https://github.com/GuangchuangYu/hexSticker) by
   Guangchang Yu
 - [hexmake](https://github.com/ColinFay/hexmake) by Colin Fay
-- [{bunny}](https://github.com/dmi3kno/bunny) by Dmytro Perelpolkin
+- [{bunny}](https://github.com/dmi3kno/bunny) by Dmytro Perepolkin
 - [{gex}](https://github.com/matt-dray/gex) by Matt Dray (disclaimer:
   that’s my name)
