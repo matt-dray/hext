@@ -6,6 +6,8 @@ pad_text <- function(
   width = 8L,
   pad_char = " "
 ) {
+  text_width <- get_display_width(text)
+
   align <- match.arg(align)
 
   if (!is.character(text)) {
@@ -23,7 +25,7 @@ pad_text <- function(
       call. = FALSE
     )
   }
-  if (nchar(text) > width) {
+  if (text_width > width) {
     stop(
       "Text length must not exceed the total character width for this line (",
       width,
@@ -32,7 +34,7 @@ pad_text <- function(
     )
   }
 
-  n_spaces <- width - nchar(text)
+  n_spaces <- width - text_width
 
   max_pad <- strrep(pad_char, n_spaces)
   pad_left <- if (align == "right") max_pad else ""
@@ -46,6 +48,17 @@ pad_text <- function(
   }
 
   paste0(pad_left, text, pad_right)
+}
+
+# Get the Display Width of Text Input
+# @noRd
+get_display_width <- function(text) {
+  if (requireNamespace("stringi", quietly = TRUE)) {
+    # Only use stringi if installed on user's machine
+    stringi::stri_width(text)
+  } else {
+    nchar(text, type = "width")
+  }
 }
 
 #' Vector to Sentence

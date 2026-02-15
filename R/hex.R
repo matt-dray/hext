@@ -21,6 +21,10 @@
 #'   (line 4) to maintain border alignment.
 #' * You can manually pad text with spaces or underscores to fine-tune text
 #'   placement.
+#' * The display width of text is calculated with [stringi::stri_width()] if
+#'   `stringi` is installed, otherwise [base::nchar()] with `type = "width"`.
+#' * Unicode characters such as emoji may not align perfectly across all
+#'   terminals or fonts due to rendering differences.
 #'
 #' @return Character scalar containing the formatted hex sticker. Invisible
 #'     if `print` is `TRUE`.

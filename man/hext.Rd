@@ -46,6 +46,10 @@ aligned text.
 (line 4) to maintain border alignment.
 \item You can manually pad text with spaces or underscores to fine-tune text
 placement.
+\item The display width of text is calculated with \code{\link[stringi:stri_width]{stringi::stri_width()}} if
+\code{stringi} is installed, otherwise \code{\link[base:nchar]{base::nchar()}} with \code{type = "width"}.
+\item Unicode characters such as emoji may not align perfectly across all
+terminals or fonts due to rendering differences.
 }
 }
 \examples{
