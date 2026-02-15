@@ -2,37 +2,17 @@
 #' @noRd
 pad_text <- function(
   text = "",
-  align = c("centre", "left", "right"),
+  align = "centre",
   width = 8L,
-  pad_char = " "
+  pad_char = " ",
+  count_type = "width"
 ) {
-  text_width <- get_display_width(text)
-
-  align <- match.arg(align)
-
-  if (!is.character(text)) {
-    stop("Argument 'text' must be of class character.", call. = FALSE)
-  }
-  if (!is.character(align)) {
-    stop("Argument 'align' must be of class character.", call. = FALSE)
-  }
-  if (!is.integer(width)) {
-    stop("Argument 'width' must be of class integer.", call. = FALSE)
-  }
-  if (!is.character(pad_char) || nchar(pad_char) > 1) {
-    stop(
-      "Argument 'pad_char' must be of class character and length 1.",
-      call. = FALSE
-    )
-  }
-  if (text_width > width) {
-    stop(
-      "Text length must not exceed the total character width for this line (",
-      width,
-      ").",
-      call. = FALSE
-    )
-  }
+  text_width <- switch(
+    count_type,
+    width = get_display_width(text),
+    chars = nchar(text),
+    stop("Argument 'count_type' is invalid.", call. = FALSE)
+  )
 
   n_spaces <- width - text_width
 
