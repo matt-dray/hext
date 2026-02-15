@@ -38,6 +38,8 @@ install.packages("pak") # if not yet installed
 pak::pak("matt-dray/hext")
 ```
 
+Quality not guaranteed.
+
 ## Use
 
 You can add text (`text_*`) and align it (`align_*`) for each of your
