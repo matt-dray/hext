@@ -54,7 +54,7 @@ hext::hext(
 )
 #   ________
 #  /        \
-# /    ⬡⬢    \
+# /   ⬡⬢   \
 # \   hext   /
 #  \________/
 ```
@@ -74,11 +74,27 @@ hext::hext(
 #  \_hext___/
 ```
 
-Your kilometreage may vary with non-[ASCII
-characters](https://en.wikipedia.org/wiki/ASCII) like emojis. Text is
-best.
+Your kilometreage may vary with [Unicode
+characters](https://en.wikipedia.org/wiki/List_of_Unicode_characters),
+including emojis. Rendering is hard.
 
-That doesn’t mean artistry is out of the question. Here is a cat.
+``` r
+hext::hext(
+  "😀",
+  "✋👔🤚",
+  "👖",
+  "👟👟"
+)
+#   ________
+#  /   😀   \
+# /  ✋👔🤚  \
+# \    👖    /
+#  \__👟👟__/
+```
+
+Anyway, text is best and [ASCII
+art](https://en.wikipedia.org/wiki/ASCII_art) can got a long way. Here
+is a cat.
 
 ``` r
 hext_cat <- hext::hext(
@@ -101,16 +117,13 @@ hext_cat |> cat()
 You may be aware of the [the Stickers
 Standard](https://sticker.how/#type-hexagon).
 
-Canoncially, a minimal, empty, flat-bottomed text-based hex is arranged
-top-to-bottom like:
+For the purposes of {hext}, the standard is:
 
-0.  2 spaces, 8 underscores
-1.  1 space, 1 slash, 8 spaces, 1 backslash
-2.  1 slash, 10 spaces, 1 backslash
-3.  1 backslash, 10 spaces, 1 slash
-4.  1 space, 1 backslash, 8 underscores, 1 slash
-
-So you can add text to four possible lines inside the hex.
+0.  2 spaces, 8 underscores.
+1.  1 space, 1 slash, 8 spaces, 1 backslash.
+2.  1 slash, 10 spaces, 1 backslash.
+3.  1 backslash, 10 spaces, 1 slash.
+4.  1 space, 1 backslash, 8 underscores, 1 slash.
 
 ## A world beyond text?
 
