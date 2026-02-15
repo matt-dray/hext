@@ -44,39 +44,25 @@ You can add text (`text_*`) and align it (`align_*`) for each of your
 hex’s four writable lines (`*_1` to `*_4`). You cannot exceed the
 allotted character width inside the hex border.
 
-To make this package’s logo:
+Here’s an example:
 
 ``` r
 # fmt: skip
 hext::hext(
-  text_2 = "⬡⬢", align_2 = "centre",
-  text_3 = "hext", align_3 = "centre"
-)
-#   ________
-#  /        \
-# /   ⬡⬢   \
-# \   hext   /
-#  \________/
-```
-
-A more complex example:
-
-``` r
-# fmt: skip
-hext::hext(
-  " hello", "this ", "is", "_hext", # space/underscore infill
+  "hello", "this ", "is", "_hext", # space/underscore adjust
   "left", "right", "centre", "left"
 )
 #   ________
-#  / hello  \
+#  /hello   \
 # /     this \
 # \    is    /
 #  \_hext___/
 ```
 
-Your kilometreage may vary with [Unicode
+Rendering is hard. Your kilometreage may vary with [Unicode
 characters](https://en.wikipedia.org/wiki/List_of_Unicode_characters),
-including emojis. Rendering is hard.
+including emojis. `hext()` defaults to assessing the display width of
+text, rather than character count.
 
 ``` r
 hext::hext(
@@ -92,13 +78,31 @@ hext::hext(
 #  \__👟👟__/
 ```
 
+In the spirit of fudging it, you can make `hext()` count characters
+instead. For example, this package’s logo uses a couple of [Unicode
+hexagons](https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Arrows):
+
+``` r
+# fmt: skip
+hext::hext(
+  text_2 = "⬡⬢", align_2 = "centre",
+  text_3 = "hext", align_3 = "centre",
+  count_type = "chars" # instead of 'width'
+)
+#   ________
+#  /        \
+# /    ⬡⬢    \
+# \   hext   /
+#  \________/
+```
+
 Anyway, text is best and [ASCII
 art](https://en.wikipedia.org/wiki/ASCII_art) can got a long way. Here
 is a cat.
 
 ``` r
 hext_cat <- hext::hext(
-  r"{/\__/\}", # raw strings to escape
+  r"{/\__/\}", # escape with raw strings
   "={ o x o}=",
   "l(  u u )",
   "_b___b",
