@@ -9,6 +9,9 @@
 #' @param align_1,align_2,align_3,align_4 Character scalar. Text alignment for
 #'     each line. One of `"centre"`, `"left"`, or `"right"`. Defaults to
 #'     `"centre"`.
+#' @param count_type Character scalar. Count the display width of
+#'     characters (`"width"`, default) or number of characters (`"chars"`)
+#'     provided by all `text_*` arguments.
 #' @param print Logical scalar. If `TRUE` (default), prints the hex sticker
 #'     and returns it invisibly. If `FALSE`, returns the string without
 #'     printing.
@@ -21,6 +24,11 @@
 #'   (line 4) to maintain border alignment.
 #' * You can manually pad text with spaces or underscores to fine-tune text
 #'   placement.
+#' * You can set count_display_width to help manually place characters.
+#' * The display width of text is calculated with [stringi::stri_width()] if
+#'   `stringi` is installed, otherwise [base::nchar()] with `type = "width"`.
+#' * Unicode characters such as emoji may not align perfectly across all
+#'   terminals or fonts due to rendering differences.
 #'
 #' @return Character scalar containing the formatted hex sticker. Invisible
 #'     if `print` is `TRUE`.
@@ -48,8 +56,11 @@ hext <- function(
   align_2 = c("centre", "left", "right"),
   align_3 = c("centre", "left", "right"),
   align_4 = c("centre", "left", "right"),
+  count_type = c("width", "chars"),
   print = TRUE
 ) {
+  count_type <- match.arg(count_type)
+
   validate_print(print)
 
   texts <- c(text_1, text_2, text_3, text_4)
@@ -77,6 +88,7 @@ hext <- function(
     aligns,
     widths,
     pad_chars,
+    count_type,
     USE.NAMES = FALSE
   )
 

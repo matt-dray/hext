@@ -38,19 +38,58 @@ install.packages("pak") # if not yet installed
 pak::pak("matt-dray/hext")
 ```
 
+Quality not guaranteed.
+
 ## Use
 
 You can add text (`text_*`) and align it (`align_*`) for each of your
 hex’s four writable lines (`*_1` to `*_4`). You cannot exceed the
 allotted character width inside the hex border.
 
-To make this package’s logo:
+Here’s an example:
+
+``` r
+# fmt: skip
+hext::hext(
+  "hello", "this ", "is", "_hext", # space/underscore adjust
+  "left", "right", "centre", "left"
+)
+#   ________
+#  /hello   \
+# /     this \
+# \    is    /
+#  \_hext___/
+```
+
+Rendering is hard. Your kilometreage may vary with [Unicode
+characters](https://en.wikipedia.org/wiki/List_of_Unicode_characters),
+including emojis. `hext()` defaults to assessing the display width of
+text, rather than character count.
+
+``` r
+hext::hext(
+  "😀",
+  "✋👔🤚",
+  "👖",
+  "👟👟"
+)
+#   ________
+#  /   😀   \
+# /  ✋👔🤚  \
+# \    👖    /
+#  \__👟👟__/
+```
+
+In the spirit of fudging it, you can make `hext()` count characters
+instead. For example, this package’s logo uses a couple of [Unicode
+hexagons](https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Arrows):
 
 ``` r
 # fmt: skip
 hext::hext(
   text_2 = "⬡⬢", align_2 = "centre",
-  text_3 = "hext", align_3 = "centre"
+  text_3 = "hext", align_3 = "centre",
+  count_type = "chars" # instead of 'width'
 )
 #   ________
 #  /        \
@@ -59,30 +98,13 @@ hext::hext(
 #  \________/
 ```
 
-A more complex example:
-
-``` r
-# fmt: skip
-hext::hext(
-  " hello", "this ", "is", "_hext", # space/underscore infill
-  "left", "right", "centre", "left"
-)
-#   ________
-#  / hello  \
-# /     this \
-# \    is    /
-#  \_hext___/
-```
-
-Your kilometreage may vary with non-[ASCII
-characters](https://en.wikipedia.org/wiki/ASCII) like emojis. Text is
-best.
-
-That doesn’t mean artistry is out of the question. Here is a cat.
+Anyway, text is best and [ASCII
+art](https://en.wikipedia.org/wiki/ASCII_art) can got a long way. Here
+is a cat.
 
 ``` r
 hext_cat <- hext::hext(
-  r"{/\__/\}", # raw strings to escape
+  r"{/\__/\}", # escape with raw strings
   "={ o x o}=",
   "l(  u u )",
   "_b___b",
@@ -101,16 +123,13 @@ hext_cat |> cat()
 You may be aware of the [the Stickers
 Standard](https://sticker.how/#type-hexagon).
 
-Canoncially, a minimal, empty, flat-bottomed text-based hex is arranged
-top-to-bottom like:
+For the purposes of {hext}, the standard is:
 
-0.  2 spaces, 8 underscores
-1.  1 space, 1 slash, 8 spaces, 1 backslash
-2.  1 slash, 10 spaces, 1 backslash
-3.  1 backslash, 10 spaces, 1 slash
-4.  1 space, 1 backslash, 8 underscores, 1 slash
-
-So you can add text to four possible lines inside the hex.
+0.  2 spaces, 8 underscores.
+1.  1 space, 1 slash, 8 spaces, 1 backslash.
+2.  1 slash, 10 spaces, 1 backslash.
+3.  1 backslash, 10 spaces, 1 slash.
+4.  1 space, 1 backslash, 8 underscores, 1 slash.
 
 ## A world beyond text?
 

@@ -21,7 +21,7 @@ validate_texts <- function(texts, widths) {
   if (any(is_too_wide)) {
     stop(
       sprintf(
-        "Text for line(s) %s exceed(s) max width (%s).",
+        "Text for line(s) %s exceed(s) max width (%s characters).",
         paste_sentence(which(is_too_wide)),
         paste_sentence(widths[is_too_wide])
       ),

@@ -2,37 +2,19 @@
 #' @noRd
 pad_text <- function(
   text = "",
-  align = c("centre", "left", "right"),
+  align = "centre",
   width = 8L,
-  pad_char = " "
+  pad_char = " ",
+  count_type = "width"
 ) {
-  align <- match.arg(align)
+  text_width <- switch(
+    count_type,
+    width = get_display_width(text),
+    chars = nchar(text),
+    stop("Argument 'count_type' is invalid.", call. = FALSE)
+  )
 
-  if (!is.character(text)) {
-    stop("Argument 'text' must be of class character.", call. = FALSE)
-  }
-  if (!is.character(align)) {
-    stop("Argument 'align' must be of class character.", call. = FALSE)
-  }
-  if (!is.integer(width)) {
-    stop("Argument 'width' must be of class integer.", call. = FALSE)
-  }
-  if (!is.character(pad_char) || nchar(pad_char) > 1) {
-    stop(
-      "Argument 'pad_char' must be of class character and length 1.",
-      call. = FALSE
-    )
-  }
-  if (nchar(text) > width) {
-    stop(
-      "Text length must not exceed the total character width for this line (",
-      width,
-      ").",
-      call. = FALSE
-    )
-  }
-
-  n_spaces <- width - nchar(text)
+  n_spaces <- width - text_width
 
   max_pad <- strrep(pad_char, n_spaces)
   pad_left <- if (align == "right") max_pad else ""
@@ -46,6 +28,17 @@ pad_text <- function(
   }
 
   paste0(pad_left, text, pad_right)
+}
+
+# Get the Display Width of Text Input
+# @noRd
+get_display_width <- function(text) {
+  if (requireNamespace("stringi", quietly = TRUE)) {
+    # Only use stringi if installed on user's machine
+    stringi::stri_width(text)
+  } else {
+    nchar(text, type = "width")
+  }
 }
 
 #' Vector to Sentence

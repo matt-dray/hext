@@ -13,6 +13,7 @@ hext(
   align_2 = c("centre", "left", "right"),
   align_3 = c("centre", "left", "right"),
   align_4 = c("centre", "left", "right"),
+  count_type = c("width", "chars"),
   print = TRUE
 )
 }
@@ -24,6 +25,10 @@ newlines. Defaults to \code{""} for empty lines.}
 \item{align_1, align_2, align_3, align_4}{Character scalar. Text alignment for
 each line. One of \code{"centre"}, \code{"left"}, or \code{"right"}. Defaults to
 \code{"centre"}.}
+
+\item{count_type}{Character scalar. Count the display width of
+characters (\code{"width"}, default) or number of characters (\code{"chars"})
+provided by all \verb{text_*} arguments.}
 
 \item{print}{Logical scalar. If \code{TRUE} (default), prints the hex sticker
 and returns it invisibly. If \code{FALSE}, returns the string without
@@ -46,6 +51,11 @@ aligned text.
 (line 4) to maintain border alignment.
 \item You can manually pad text with spaces or underscores to fine-tune text
 placement.
+\item You can set count_display_width to help manually place characters.
+\item The display width of text is calculated with \code{\link[stringi:stri_width]{stringi::stri_width()}} if
+\code{stringi} is installed, otherwise \code{\link[base:nchar]{base::nchar()}} with \code{type = "width"}.
+\item Unicode characters such as emoji may not align perfectly across all
+terminals or fonts due to rendering differences.
 }
 }
 \examples{
