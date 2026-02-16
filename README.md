@@ -16,8 +16,8 @@ proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https:
 
       ________
      /        \
-    /    ⬡⬢    \
-    \   hext   /
+    /   he     \
+    \     xt   /
      \________/
 
 ## About
@@ -46,25 +46,42 @@ You can add text (`text_*`) and align it (`align_*`) for each of your
 hex’s four writable lines (`*_1` to `*_4`). You cannot exceed the
 allotted character width inside the hex border.
 
-Here’s an example:
+Here’s the simple logo for this package:
+
+``` r
+hext::hext(
+  # You can adjust placement with spaces
+  text_2 = "he  ",
+  text_3 = "  xt"
+)
+#   ________
+#  /        \
+# /   he     \
+# \     xt   /
+#  \________/
+```
+
+Alignment defaults to centre, but you can change it:
 
 ``` r
 # fmt: skip
 hext::hext(
-  "hello", "this ", "is", "_hext", # space/underscore adjust
+  "hello", "this", "is", "hext",
   "left", "right", "centre", "left"
 )
 #   ________
 #  /hello   \
-# /     this \
+# /      this\
 # \    is    /
-#  \_hext___/
+#  \hext____/
 ```
 
-Rendering is hard. Your kilometreage may vary with [Unicode
+Rendering is hard. Platforms and tools will vary in how they present the
+same logo.
+
+In particular, your kilometreage may vary with [Unicode
 characters](https://en.wikipedia.org/wiki/List_of_Unicode_characters),
-including emojis. `hext()` defaults to assessing the display width of
-text, rather than character count.
+including emojis.
 
 ``` r
 hext::hext(
@@ -80,26 +97,10 @@ hext::hext(
 #  \__👟👟__/
 ```
 
-In the spirit of fudging it, you can make `hext()` count characters
-instead. For example, this package’s logo uses a couple of [Unicode
-hexagons](https://en.wikipedia.org/wiki/Miscellaneous_Symbols_and_Arrows):
+`hext()` defaults to assessing the display width of text. In the spirit
+of fudging it, use `count_type = "chars"` to count characters instead.
 
-``` r
-# fmt: skip
-hext::hext(
-  text_2 = "⬡⬢", align_2 = "centre",
-  text_3 = "hext", align_3 = "centre",
-  count_type = "chars" # instead of 'width'
-)
-#   ________
-#  /        \
-# /    ⬡⬢    \
-# \   hext   /
-#  \________/
-```
-
-Anyway, text is best and [ASCII
-art](https://en.wikipedia.org/wiki/ASCII_art) can got a long way. Here
+[ASCII art](https://en.wikipedia.org/wiki/ASCII_art) is encouraged. Here
 is a cat.
 
 ``` r
