@@ -6,12 +6,14 @@ test_that("hext returns a character string when print = FALSE", {
   expect_length(res, 1)
 })
 
-test_that("hext prints and returns invisibly when print = TRUE", {
-  expect_invisible(
-    expect_output(
-      res <- hext("a", "b", "c", "d", print = TRUE)
-    )
+test_that("hext prints output", {
+  expect_output(
+    hext("a", "b", "c", "d", print = TRUE)
   )
+})
+
+test_that("hext returns string invisibly", {
+  res <- hext("a", "b", "c", "d", print = TRUE)
   expect_type(res, "character")
 })
 
