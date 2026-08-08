@@ -29,6 +29,7 @@
 #'   `stringi` is installed, otherwise [base::nchar()] with `type = "width"`.
 #' * Unicode characters such as emoji may not align perfectly across all
 #'   terminals or fonts due to rendering differences.
+#' * The backslash character does not get rendered without escaping `\\`.
 #'
 #' @return Character scalar containing the formatted hex sticker. Invisible
 #'     if `print` is `TRUE`.
