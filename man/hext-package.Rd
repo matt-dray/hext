@@ -10,5 +10,15 @@ Make a hex-sticker logo entirely from text. Inspired by Yihui Xie and Charlie Ga
 \author{
 \strong{Maintainer}: Matt Dray \email{mwdray+hext@gmail.com}
 
+Authors:
+\itemize{
+  \item Matt Dray \email{mwdray+hext@gmail.com}
+}
+
+Other contributors:
+\itemize{
+  \item Hanne Oberman [contributor]
+}
+
 }
 \keyword{internal}
