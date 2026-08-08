@@ -56,6 +56,7 @@ placement.
 \code{stringi} is installed, otherwise \code{\link[base:nchar]{base::nchar()}} with \code{type = "width"}.
 \item Unicode characters such as emoji may not align perfectly across all
 terminals or fonts due to rendering differences.
+\item The backslash character does not get rendered without escaping \verb{\\\\}.
 }
 }
 \examples{
