@@ -71,9 +71,28 @@ hext <- function(
     "grey",
     "gray"
   ),
+  col_text = c(
+    "none",
+    "red",
+    "green",
+    "yellow",
+    "blue",
+    "magenta",
+    "cyan",
+    "white",
+    "black",
+    "grey",
+    "gray"
+  ),
   print = TRUE
 ) {
+  align_1 <- match.arg(align_1)
+  align_2 <- match.arg(align_2)
+  align_3 <- match.arg(align_3)
+  align_4 <- match.arg(align_4)
   count_type <- match.arg(count_type)
+  col_border <- match.arg(col_border)
+  col_text <- match.arg(col_text)
 
   validate_print(print)
 
@@ -85,12 +104,7 @@ hext <- function(
 
   validate_texts(texts, widths)
 
-  aligns <- c(
-    match.arg(align_1),
-    match.arg(align_2),
-    match.arg(align_3),
-    match.arg(align_4)
-  )
+  aligns <- c(align_1, align_2, align_3, align_4)
 
   validate_aligns(aligns)
 
@@ -115,25 +129,9 @@ hext <- function(
   )
 
   if (col_border != "none") {
-    col_border <- match.arg(col_border)
+    # TODO: abstract into function
 
-    cols <- setNames(
-      c(91:97, 30, 90, 90),
-      c(
-        "red",
-        "green",
-        "yellow",
-        "blue",
-        "magenta",
-        "cyan",
-        "white",
-        "black",
-        "grey",
-        "gray"
-      )
-    )
-
-    col <- paste0("\033[1;", cols[col_border], "m")
+    col <- .col2ansi(col_border)
     col_end <- "\033[0m"
 
     hex_lines[1] <- gsub("_", paste0(col, "_", col_end), hex_lines[1])
@@ -153,6 +151,26 @@ hext <- function(
     hex_lines[5] <- gsub("_", paste0(col, "_", col_end), hex_lines[5])
   }
 
+  if (col_text != "none") {
+    # TODO: abstract into function
+    col <- .col2ansi(col_text)
+    col_end <- "\033[0m"
+
+    # TODO: handle replacement asraw strings
+    if (text_1 != "") {
+      hex_lines[2] <- gsub(text_1, paste0(col, text_1, col_end), hex_lines[2])
+    }
+    if (text_2 != "") {
+      hex_lines[3] <- gsub(text_2, paste0(col, text_2, col_end), hex_lines[3])
+    }
+    if (text_3 != "") {
+      hex_lines[4] <- gsub(text_3, paste0(col, text_3, col_end), hex_lines[4])
+    }
+    if (text_4 != "") {
+      hex_lines[5] <- gsub(text_4, paste0(col, text_4, col_end), hex_lines[5])
+    }
+  }
+
   hex <- paste(hex_lines, collapse = "\n")
 
   if (print) {
@@ -165,4 +183,24 @@ hext <- function(
 
 .substr <- function(x, start, stop, value) {
   paste0(substr(x, 1, start - 1), value, substr(x, stop + 1, nchar(x)))
+}
+
+.col2ansi <- function(col) {
+  cols <- setNames(
+    c(91:97, 30, 90, 90),
+    c(
+      "red",
+      "green",
+      "yellow",
+      "blue",
+      "magenta",
+      "cyan",
+      "white",
+      "black",
+      "grey",
+      "gray"
+    )
+  )
+
+  paste0("\033[1;", cols[col], "m")
 }
