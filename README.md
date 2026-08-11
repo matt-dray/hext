@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# hext
+# {hext}
 
 <!-- badges: start -->
 
@@ -12,6 +12,8 @@ proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https:
 [![R-CMD-check](https://github.com/matt-dray/hext/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/matt-dray/hext/actions/workflows/R-CMD-check.yaml)
 [![format-check.yaml](https://github.com/matt-dray/hext/actions/workflows/format.yaml/badge.svg)](https://github.com/matt-dray/hext/actions/workflows/format.yaml)
 [![jarl-check](https://github.com/matt-dray/hext/actions/workflows/lint.yaml/badge.svg)](https://github.com/matt-dray/hext/actions/workflows/lint.yaml)
+[![Blog
+posts](https://img.shields.io/badge/rostrum.blog-black?style=flat&labelColor=00ff00&logo=data%3Aimage%2Fgif%3Bbase64%2CR0lGODdhoACgAJEAAAAAAP%2F%2F%2FwAAAAAAACH5BAlkAAIALAAAAACgAKAAAAL%2FlI%2BpywgPY5u02hQzuLz7r0nfSBohVKbqdT7rS7UbTMNyjR93zoNtX9sBh7EfcSU8Kh3GJSnpVEKjnCkVaL0WT1pps2vJgr1cp3gMPufU6Cs7%2BG233zS6nByK2u%2FEPTLO1%2BWnMhi4BjhUaAhXtqS4aIOIJQmJpvhYqXVJmbm42dgZ%2BpkXWjqqUWrKOYGZioc60urat9ogOzsJ2nGLy3Oa0VtVy3AmUzy8wMuCrHBsTErMjCH9pytszfQMG40dRk34bcKpDZ0cLqDs3V3hTI5ie57OHj%2FuLsJdvnv%2BRL%2BObv8O3zYP8rbku3YwG0BW%2FRLmcjjPH8CA5vwxtIjj172K%2FwvhYRQITE67gc0mzgC5seRHS%2FUkmrwI8d%2FKMSNDotQGk%2BS0mWlaxjR5kqNOhUMN1Uy5s%2BNNFx5j3jlKUaVSoTapIvXks6i4iTmrStXKByrTpca6XtWxz0xWr0ntmY3ali1Wl3SnfpWLlqeghkDdxkrriG9fcvz0ahI8%2BFlhpyIRJ9YIdy5jso%2FBvh2bCXLlyVYjG3W82XJT0XNAhz4bkTNN06cx6zPshnXrxaQzv1TLNZg6u7Ry6zboN7Dv36Pd6blNvDhh3LyTEzXOPLjzu8uFN58u83oPoNg7K44Ovfvz6q%2FCi0%2FRuuz5w%2Blhr6%2FWvvZ7RvHxzn9Y3%2FP97fnt7%2F8%2F1J9%2B%2F2UUoIAD1lGgawf6kmBQ54mlHmVrkUedgQTWJV2F30mIoX8A%2FoScdxGKCOFxHVIYF4rj4aSchfSBxV2LG5I4oYsInsgihyAOp6GDve2oXXYZppijiCYCOeSKM%2FZYInioCWkekzUuSaSCiUw5opQ4Uqmkj3tt6WVeQTbZCZk0gnlZmIGYqSWS%2FhX0IYxYslmlmmFhmSadXaqCpoxZ1pkmn24%2BGSNZgYqCp596iilfT33qKOejtknaZqSD2hgMhIsuaKSiiXKamqVJMuohqFtdyiWpT5p6qqhRAsrqoZC%2BCdh6mn4aa6ezElrrg3PimiusuwoIJ6I81nmre4L%2Fjtrqq10WW9qxz%2F6qrLFjhlhpqb8Veiaqf3bHbba8SotduMhSq1ov5k4LJrQskdusiqoW6Su8UMobL73qAnsupcJO6m2e%2FO5pravjXuuvZAYTi%2B2%2FPS5La7sDz2vlZwlT%2FC3GsgK8cMX5pvqxne5GcnHIm96LqaMBe1oyyh7f2fK6GvsJ8cEdZxzyxpWcLHPONBccsbc89%2FrjzQLHTPSVSNt78lMTm%2Fy0y3Y6vTTCK5cZdc9S6wzJ0ExHTfXV3Rr9c7TpEjzsy5pNfeHZM6ctsmlHNor22EHT%2FXZ5q5Ztt83a6qp3ynWLy7B7IzuM0M1N833E2keL%2FZrb6MnNMuSJPv9NsuRbV062D9V6rnmyli%2FzOceYIx7s5IYnnbrjqWeOt8%2Bvwxf75rODs3rpt7t%2Bu%2Bqhsx4s773TdvrgkBQAADs%3D)](https://www.rostrum.blog/index.html#category=hext)
 <!-- badges: end -->
 
       ________
@@ -24,14 +26,16 @@ proof-of-concept.](https://www.repostatus.org/badges/latest/concept.svg)](https:
 
 Hex stickers… but text.
 
-[Bye, hex stickers](https://yihui.org/en/2026/02/bye-stickers/).
+An R package motivated by Yihui’s [‘Bye, hex
+stickers’](https://yihui.org/en/2026/02/bye-stickers/) manifesto.
+
 Inspired by artistry in [Yihui’s
-{litedown}](https://github.com/yihui/litedown) and then [Charlie’s
-{secretbase}](https://github.com/shikokuchuo/secretbase/).
+{litedown}](https://github.com/yihui/litedown) and [Charlie’s
+{secretbase}](https://github.com/shikokuchuo/secretbase/) packages.
 
 ## Install
 
-The package is a GitHub exclusive for now.
+This concept R package is a GitHub exclusive for now.
 
 ``` r
 install.packages("pak") # if not yet installed
@@ -41,6 +45,8 @@ pak::pak("matt-dray/hext")
 Quality not guaranteed.
 
 ## Use
+
+There’s one function: `hext()`.
 
 You can add text (`text_*`) and align it (`align_*`) for each of your
 hex’s four writable lines (`*_1` to `*_4`). You cannot exceed the
@@ -107,7 +113,7 @@ is a cat.
 hext_cat <- hext::hext(
   r"{/\__/\}", # escape with raw strings
   "={ o x o}=",
-  "l(  u u )",
+  "L(  u u )",
   "_b___b",
   print = FALSE # return char vector invisibly
 )
@@ -115,7 +121,7 @@ hext_cat |> cat()
 #   ________
 #  / /\__/\ \
 # /={ o x o}=\
-# \l(  u u ) /
+# \L(  u u ) /
 #  \__b___b_/
 ```
 
@@ -124,7 +130,7 @@ hext_cat |> cat()
 You may be aware of the [the Stickers
 Standard](https://sticker.how/#type-hexagon).
 
-For the purposes of {hext}, the standard is:
+For the purposes of {hext}, the standard is (line-by-line):
 
 0.  2 spaces, 8 underscores.
 1.  1 space, 1 slash, 8 spaces, 1 backslash.
