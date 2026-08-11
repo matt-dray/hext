@@ -58,6 +58,19 @@ hext <- function(
   align_3 = c("centre", "left", "right"),
   align_4 = c("centre", "left", "right"),
   count_type = c("width", "chars"),
+  col_border = c(
+    "none",
+    "red",
+    "green",
+    "yellow",
+    "blue",
+    "magenta",
+    "cyan",
+    "white",
+    "black",
+    "grey",
+    "gray"
+  ),
   print = TRUE
 ) {
   count_type <- match.arg(count_type)
@@ -93,20 +106,54 @@ hext <- function(
     USE.NAMES = FALSE
   )
 
-  hex <- sprintf(
-    paste(
-      "  ________",
-      " /%s\\",
-      "/%s\\",
-      "\\%s/",
-      " \\%s/",
-      sep = "\n"
-    ),
-    padded_texts[1],
-    padded_texts[2],
-    padded_texts[3],
-    padded_texts[4]
+  hex_lines <- c(
+    "  ________",
+    sprintf(" /%s\\", padded_texts[1]),
+    sprintf("/%s\\", padded_texts[2]),
+    sprintf("\\%s/", padded_texts[3]),
+    sprintf(" \\%s/", padded_texts[4])
   )
+
+  if (col_border != "none") {
+    col_border <- match.arg(col_border)
+
+    cols <- setNames(
+      c(91:97, 30, 90, 90),
+      c(
+        "red",
+        "green",
+        "yellow",
+        "blue",
+        "magenta",
+        "cyan",
+        "white",
+        "black",
+        "grey",
+        "gray"
+      )
+    )
+
+    col <- paste0("\033[1;", cols[col_border], "m")
+    col_end <- "\033[0m"
+
+    hex_lines[1] <- gsub("_", paste0(col, "_", col_end), hex_lines[1])
+
+    hex_lines[2] <- .substr(hex_lines[2], 2, 2, paste0(col, "/", col_end))
+    hex_lines[2] <- .substr(hex_lines[2], 22, 22, paste0(col, "\\", col_end))
+
+    hex_lines[3] <- .substr(hex_lines[3], 1, 1, paste0(col, "/", col_end))
+    hex_lines[3] <- .substr(hex_lines[3], 23, 23, paste0(col, "\\", col_end))
+
+    hex_lines[4] <- .substr(hex_lines[4], 1, 1, paste0(col, "\\", col_end))
+    hex_lines[4] <- .substr(hex_lines[4], 23, 23, paste0(col, "/", col_end))
+
+    hex_lines[5] <- .substr(hex_lines[5], 2, 2, paste0(col, "\\", col_end))
+    hex_lines[5] <- .substr(hex_lines[5], 22, 22, paste0(col, "/", col_end))
+
+    hex_lines[5] <- gsub("_", paste0(col, "_", col_end), hex_lines[5])
+  }
+
+  hex <- paste(hex_lines, collapse = "\n")
 
   if (print) {
     cat(hex)
@@ -114,4 +161,8 @@ hext <- function(
   }
 
   hex
+}
+
+.substr <- function(x, start, stop, value) {
+  paste0(substr(x, 1, start - 1), value, substr(x, stop + 1, nchar(x)))
 }
