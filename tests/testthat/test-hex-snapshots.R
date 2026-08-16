@@ -12,6 +12,12 @@ test_that("hext printed output snapshot", {
   )
 })
 
+test_that("hext with colour printed output snapshot", {
+  expect_snapshot_output(
+    hext("hello!", "this", "is", "hext", col = "yellow")
+  )
+})
+
 test_that("hext mixed alignment snapshot", {
   expect_snapshot(
     hext(
