@@ -35,7 +35,8 @@ Inspired by artistry in [Yihui’s
 
 ## Install
 
-This concept R package is a GitHub exclusive for now.
+This concept R package is a GitHub exclusive. Install like this, for
+example:
 
 ``` r
 install.packages("pak") # if not yet installed
@@ -46,11 +47,16 @@ Quality not guaranteed.
 
 ## Use
 
+### Overview
+
 There’s one function: `hext()`.
 
 You can add text (`text_*`) and align it (`align_*`) for each of your
 hex’s four writable lines (`*_1` to `*_4`). You cannot exceed the
-allotted character width inside the hex border.
+allotted character width inside the hex border. You can colour the text
+with one colour (`col`).
+
+### Small example
 
 Here’s the simple logo for this package:
 
@@ -67,6 +73,8 @@ hext::hext(
 #  \________/
 ```
 
+### Alignment
+
 Alignment defaults to centre, but you can change it:
 
 ``` r
@@ -81,6 +89,32 @@ hext::hext(
 # \    is    /
 #  \hext____/
 ```
+
+### Colour
+
+The `col` argument lets you colour all the text with one colour. See
+details in `?hext` for full colour options. Colour is added [using ANSI
+escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), so the
+exact visible colour is dependent on the viewer’s terminal.
+
+``` r
+# fmt: skip
+hext::hext(
+  "hello", "this", "is", "hext",
+  "left", "right", "centre", "left",
+  col = "yellow",
+  print = FALSE
+)
+# [1] "\033[1;93m  ________\033[0m\n\033[1;93m /hello   \\\033[0m\n\033[1;93m/      this\\\033[0m\n\033[1;93m\\    is    /\033[0m\n\033[1;93m \\hext____/\033[0m"
+```
+
+Here’s a screenshot of the output viewed with zsh.
+
+<img src="man/figures/README-hext-col.png" data-fig-align="left"
+data-fig-alt="A text-hexagon logo printed to a zsh terminal. The text inside the hexagon says &#39;hello this is hext&#39;, with each word on a different line, aligned left, right, centre and left, respectively. The background is black and the text is bright yellow."
+width="150" />
+
+## Rendering disclaimer
 
 Rendering is hard. Platforms and tools will vary in how they present the
 same logo.
@@ -125,7 +159,7 @@ hext_cat |> cat()
 #  \__b___b_/
 ```
 
-## The Text-Stickers Standard
+## The Hext Logo Standard
 
 You may be aware of the [the Stickers
 Standard](https://sticker.how/#type-hexagon).
