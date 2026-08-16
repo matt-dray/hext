@@ -1,6 +1,6 @@
 #' Check Text Arguments
 #' @noRd
-validate_texts <- function(texts, widths) {
+.validate_texts <- function(texts, widths) {
   if (!all(lengths(as.list(texts)) == 1L)) {
     stop("Each text value must be length 1.", call. = FALSE)
   }
@@ -22,8 +22,8 @@ validate_texts <- function(texts, widths) {
     stop(
       sprintf(
         "Text for line(s) %s exceed(s) max width (%s characters).",
-        paste_sentence(which(is_too_wide)),
-        paste_sentence(widths[is_too_wide])
+        .paste_sentence(which(is_too_wide)),
+        .paste_sentence(widths[is_too_wide])
       ),
       call. = FALSE
     )
@@ -32,7 +32,7 @@ validate_texts <- function(texts, widths) {
 
 #' Check Alignment Arguments
 #' @noRd
-validate_aligns <- function(aligns) {
+.validate_aligns <- function(aligns) {
   if (!all(lengths(as.list(aligns)) == 1L)) {
     stop("Each alignment value must be length 1.", call. = FALSE)
   }
@@ -44,7 +44,7 @@ validate_aligns <- function(aligns) {
 
 #' Check Print Argument
 #' @noRd
-validate_print <- function(is_print) {
+.validate_print <- function(is_print) {
   if (!is.logical(is_print) || length(is_print) != 1L || is.na(is_print)) {
     stop("Argument 'print' must be TRUE or FALSE.", call. = FALSE)
   }

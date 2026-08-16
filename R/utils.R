@@ -1,6 +1,6 @@
 #' Pad Text to Line Width
 #' @noRd
-pad_text <- function(
+.pad_text <- function(
   text = "",
   align = "centre",
   width = 8L,
@@ -9,7 +9,7 @@ pad_text <- function(
 ) {
   text_width <- switch(
     count_type,
-    width = get_display_width(text),
+    width = .get_display_width(text),
     chars = nchar(text),
     stop("Argument 'count_type' is invalid.", call. = FALSE)
   )
@@ -32,7 +32,7 @@ pad_text <- function(
 
 # Get the Display Width of Text Input
 # @noRd
-get_display_width <- function(text) {
+.get_display_width <- function(text) {
   if (requireNamespace("stringi", quietly = TRUE)) {
     # Only use stringi if installed on user's machine
     stringi::stri_width(text)
@@ -43,7 +43,7 @@ get_display_width <- function(text) {
 
 #' Vector to Sentence
 #' @noRd
-paste_sentence <- function(values) {
+.paste_sentence <- function(values) {
   if (!is.atomic(values)) {
     stop("Argument 'values' must be an atomic vector.", call. = FALSE)
   }
@@ -51,9 +51,6 @@ paste_sentence <- function(values) {
   values <- as.character(values)
   n <- length(values)
 
-  if (n == 0L) {
-    return("")
-  }
   if (n == 1L) {
     return(values)
   }
@@ -65,4 +62,28 @@ paste_sentence <- function(values) {
   last <- values[n]
 
   paste0(paste(rest, collapse = ", "), " and ", last)
+}
+
+#' Convert Named Colour to ANSI Escape Code
+#' @noRd
+.col2ansi <- function(col) {
+  cols <- stats::setNames(
+    c(91:97, 30, 90, 90),
+    c(
+      "red",
+      "green",
+      "yellow",
+      "blue",
+      "magenta",
+      "cyan",
+      "white",
+      "black",
+      "grey",
+      "gray"
+    )
+  )
+
+  stopifnot(col %in% names(cols))
+
+  paste0("\033[1;", cols[col], "m")
 }
