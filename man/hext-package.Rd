@@ -3,9 +3,9 @@
 \docType{package}
 \name{hext-package}
 \alias{hext-package}
-\title{hext: Make Text-Based Hex Logos}
+\title{hext: Make Text Hex Logos}
 \description{
-Make a hex-sticker logo entirely from text. Inspired by Yihui Xie and Charlie Gao.
+Make a hex logo entirely from text. Inspired by Yihui Xie and Charlie Gao.
 }
 \author{
 \strong{Maintainer}: Matt Dray \email{mwdray+hext@gmail.com}

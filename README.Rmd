@@ -42,7 +42,8 @@ Inspired by artistry in [Yihui's {litedown}](https://github.com/yihui/litedown) 
 
 ## Install
 
-This concept R package is a GitHub exclusive for now.
+This concept R package is a GitHub exclusive.
+Install like this, for example:
 
 ```r
 install.packages("pak") # if not yet installed
@@ -53,10 +54,15 @@ Quality not guaranteed.
 
 ## Use
 
+### Overview
+
 There's one function: `hext()`.
 
 You can add text (`text_*`) and align it (`align_*`) for each of your hex's four writable lines (`*_1` to `*_4`).
 You cannot exceed the allotted character width inside the hex border.
+You can colour the text with one colour (`col`).
+
+### Small example
 
 Here's the simple logo for this package:
 
@@ -69,6 +75,8 @@ hext::hext(
 )
 ```
 
+### Alignment
+
 Alignment defaults to centre, but you can change it:
 
 ```{r}
@@ -79,6 +87,28 @@ hext::hext(
   "left", "right", "centre", "left"
 )
 ```
+
+### Colour
+
+The `col` argument lets you colour all the text with one colour, [using ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code).
+See details in `?hext` for full colour options.
+
+```{r}
+#| label: hext-col
+# fmt: skip
+hex <- hext::hext(
+  "hello", "this", "is", "hext",
+  "left", "right", "centre", "left",
+  col = "yellow",
+  print = FALSE
+)
+```
+
+Here's a screenshot of the output from `cat(hex)` viewed in an R console.
+
+![](man/figures/README-hext-col.png){width="150px" fig-align="left" fig-alt="A text-hexagon logo printed to a zsh terminal. The text inside the hexagon says 'hello this is hext', with each word on a different line, aligned left, right, centre and left, respectively. The background is black and the text is bright yellow."}
+
+## Rendering disclaimer
 
 Rendering is hard.
 Platforms and tools will vary in how they present the same logo.
@@ -113,7 +143,7 @@ hext_cat <- hext::hext(
 hext_cat |> cat()
 ```
 
-## The Text-Stickers Standard
+## The Hext Logo Standard
 
 You may be aware of the [the Stickers Standard](https://sticker.how/#type-hexagon).
 

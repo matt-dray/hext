@@ -13,7 +13,7 @@ test_that("hext prints output", {
 })
 
 test_that("hext returns string invisibly", {
-  res <- hext("a", "b", "c", "d", print = TRUE)
+  res <- hext("a", "b", "c", "d", print = FALSE)
   expect_type(res, "character")
 })
 
@@ -22,11 +22,23 @@ test_that("hext output has expected hex structure", {
   lines <- strsplit(res, "\n", fixed = TRUE)[[1]]
 
   expect_equal(length(lines), 5)
-  expect_true(grepl("^  ________", lines[1]))
+  expect_true(grepl("^  ________$", lines[1]))
   expect_true(grepl("^ /.*\\\\$", lines[2]))
   expect_true(grepl("^/.*\\\\$", lines[3]))
   expect_true(grepl("^\\\\.*/$", lines[4]))
   expect_true(grepl("^ \\\\.*\\/$", lines[5]))
+})
+
+test_that("hext output with colour has expected hex structure", {
+  res <- hext("a", "b", "c", "d", col = "yellow", print = FALSE)
+  lines <- strsplit(res, "\n", fixed = TRUE)[[1]]
+
+  expect_equal(length(lines), 5)
+  expect_true(lines[1] == "\033[1;93m  ________\033[0m")
+  expect_true(lines[2] == "\033[1;93m /   a    \\\033[0m")
+  expect_true(lines[3] == "\033[1;93m/    b     \\\033[0m")
+  expect_true(lines[4] == "\033[1;93m\\    c     /\033[0m")
+  expect_true(lines[5] == "\033[1;93m \\___d____/\033[0m")
 })
 
 test_that("text exceeding width limits errors", {
@@ -83,6 +95,10 @@ test_that("count_type argument is validated", {
   expect_error(
     hext("a", "b", "c", "d", count_type = "bytes", print = FALSE)
   )
+})
+
+test_that("unknown colour errors", {
+  expect_error(hext(col = "beige", print = FALSE))
 })
 
 test_that("empty inputs produce valid hex", {

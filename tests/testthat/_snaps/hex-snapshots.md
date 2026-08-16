@@ -13,6 +13,14 @@
     \    is    /
      \__hext__/
 
+# hext with colour printed output snapshot
+
+    [1;93m  ________[0m
+    [1;93m / hello! \[0m
+    [1;93m/   this   \[0m
+    [1;93m\    is    /[0m
+    [1;93m \__hext__/[0m
+
 # hext mixed alignment snapshot
 
     Code
