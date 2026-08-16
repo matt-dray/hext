@@ -1,17 +1,17 @@
 Package: hext
-Title: Make Text-Based Hex Logos
-Version: 0.1.2
+Title: Make Text Hex Logos
+Version: 0.2.0
 Authors@R: c(
     person("Matt", "Dray", , "mwdray+hext@gmail.com", role = c("aut", "cre")),
     person("Hanne", "Oberman", role = "ctb")
   )
-Description: Make a hex-sticker logo entirely from text. Inspired by Yihui
-    Xie and Charlie Gao.
+Description: Make a hex logo entirely from text. Inspired by Yihui Xie and
+    Charlie Gao.
 License: MIT + file LICENSE
 Suggests:
     stringi,
     testthat (>= 3.0.0)
+Config/roxygen2/version: 8.0.0
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-Config/roxygen2/version: 8.0.0
