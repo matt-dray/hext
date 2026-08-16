@@ -2,7 +2,7 @@
 % Please edit documentation in R/hex.R
 \name{hext}
 \alias{hext}
-\title{Make a Text-Based Hex Sticker}
+\title{Make a Text Hex Logo}
 \usage{
 hext(
   text_1 = "",
@@ -14,12 +14,14 @@ hext(
   align_3 = c("centre", "left", "right"),
   align_4 = c("centre", "left", "right"),
   count_type = c("width", "chars"),
+  col = c("none", "red", "green", "yellow", "blue", "magenta", "cyan", "white", "black",
+    "grey", "gray"),
   print = TRUE
 )
 }
 \arguments{
 \item{text_1, text_2, text_3, text_4}{Character scalar. Text to display on lines
-1 to 4 of the hex sticker. Each must be length 1 and not contain
+1 to 4 of the hex logo. Each must be length 1 and not contain
 newlines. Defaults to \code{""} for empty lines.}
 
 \item{align_1, align_2, align_3, align_4}{Character scalar. Text alignment for
@@ -30,33 +32,76 @@ each line. One of \code{"centre"}, \code{"left"}, or \code{"right"}. Defaults to
 characters (\code{"width"}, default) or number of characters (\code{"chars"})
 provided by all \verb{text_*} arguments.}
 
-\item{print}{Logical scalar. If \code{TRUE} (default), prints the hex sticker
+\item{col}{Character scalar. Name of a colour for the text foreground.
+See details for colour options. Defaults to \code{"none"}.}
+
+\item{print}{Logical scalar. If \code{TRUE} (default), prints the hex logo
 and returns it invisibly. If \code{FALSE}, returns the string without
 printing.}
 }
 \value{
-Character scalar containing the formatted hex sticker. Invisible
-if \code{print} is \code{TRUE}.
+Character scalar containing the formatted hex. Invisible if \code{print}
+is \code{TRUE}.
 }
 \description{
-Create a simple text-based hexagon-sticker logo with up to four lines of
-aligned text.
+Create a simple text-based hexagon logo, optionally coloured, with up to four
+lines of aligned text.
 }
 \details{
+\subsection{Line limits}{
 \itemize{
 \item Lines 1 and 4 have a maximum width of 8 characters.
 \item Lines 2 and 3 have a maximum width of 10 characters.
 \item Text exceeding a line's width will trigger an error.
+}
+}
+
+\subsection{Text padding}{
+\itemize{
 \item Padding is automatically applied with spaces (lines 1 to 3) or underscores
 (line 4) to maintain border alignment.
 \item You can manually pad text with spaces or underscores to fine-tune text
 placement.
-\item You can set count_display_width to help manually place characters.
+}
+}
+
+\subsection{Display width}{
+\itemize{
+\item You can set \code{count_type} to help manually place characters.
 \item The display width of text is calculated with \code{\link[stringi:stri_width]{stringi::stri_width()}} if
 \code{stringi} is installed, otherwise \code{\link[base:nchar]{base::nchar()}} with \code{type = "width"}.
+}
+}
+
+\subsection{Rendering}{
+\itemize{
 \item Unicode characters such as emoji may not align perfectly across all
 terminals or fonts due to rendering differences.
-\item The backslash character does not get rendered without escaping \verb{\\\\}.
+\item The backslash character does not get rendered without escaping, like
+\code{"\\\\"}.
+}
+}
+
+\subsection{Colours}{
+
+You can pass these colour name options to \code{col}:
+\itemize{
+\item \code{"none"}, which results in the default colours provided by your terminal
+\item \code{"red"}
+\item \code{"green"}
+\item \code{"yellow"}
+\item \code{"blue"}
+\item \code{"magenta"}
+\item \code{"cyan"}
+\item \code{"white"}
+\item \code{"black"}
+\item \code{"grey"} or \code{"gray"}
+}
+
+These are converted to ANSI escape codes that represent bright foreground
+colours (colour codes 90 to 97) and black (30). The exact colour that gets
+rendered will vary by terminal. Note that the ANSI codes are included in the
+returned hex if \code{col} is set to a value other than \code{"none"}.
 }
 }
 \examples{
@@ -69,7 +114,14 @@ hext(
   "left", "right", "centre", "left"
 )
 
-# Return hex as a string without printing
+# Colour the text
+hext(
+  "hello!", "this", "is", "hext",
+  "left", "right", "centre", "left",
+  col = "yellow"
+)
+
+# Return hex invisibly without printing
 hex_text <- hext("hello!", "this", "is", "hext", print = FALSE)
 cat(hex_text)
 }
