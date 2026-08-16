@@ -92,23 +92,22 @@ hext::hext(
 
 ### Colour
 
-The `col` argument lets you colour all the text with one colour. See
-details in `?hext` for full colour options. Colour is added [using ANSI
-escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code), so the
-exact visible colour is dependent on the viewer’s terminal.
+The `col` argument lets you colour all the text with one colour, [using
+ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code). See
+details in `?hext` for full colour options.
 
 ``` r
 # fmt: skip
-hext::hext(
+hex <- hext::hext(
   "hello", "this", "is", "hext",
   "left", "right", "centre", "left",
   col = "yellow",
   print = FALSE
 )
-# [1] "\033[1;93m  ________\033[0m\n\033[1;93m /hello   \\\033[0m\n\033[1;93m/      this\\\033[0m\n\033[1;93m\\    is    /\033[0m\n\033[1;93m \\hext____/\033[0m"
 ```
 
-Here’s a screenshot of the output viewed with zsh.
+Here’s a screenshot of the output from `cat(hex)` viewed in an R
+console.
 
 <img src="man/figures/README-hext-col.png" data-fig-align="left"
 data-fig-alt="A text-hexagon logo printed to a zsh terminal. The text inside the hexagon says &#39;hello this is hext&#39;, with each word on a different line, aligned left, right, centre and left, respectively. The background is black and the text is bright yellow."
